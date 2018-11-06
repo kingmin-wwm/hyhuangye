@@ -1,0 +1,111 @@
+<!--pages/index/index.wxml-->
+<view>
+  <view class='img'>
+    <image src='https://wz.xinruikj.cn/hy114/imgs/uploads/logo.png'></image>
+    <view class='search'  >
+      <input type='text' bindconfirm='search' placeholder='请输入名字或关键字' ></input>
+      <icon type="search"  color="gray"/>
+    </view>
+  </view>
+  <view class='xiantiao'></view>
+  <!-- 分类 -->
+  <view>
+    <view class='ititle' bindtap='clsshow'>行业分类 <text class='xiangxia'></text></view>
+     <!-- 列表渲染 -->
+    <view class='subcls' wx:if="{{clsshow}}" >
+       <view  wx:for="{{classname}}" wx:key="{{index}}" class='clsview' bindtap='cls' data-cls='{{item.name}}'>
+          <view class='clsimg'><image src='{{item.img}}'></image></view>
+          <view class='clsname'>{{item.name}}</view>
+       </view>
+    </view>
+  </view>
+  <view class='xiantiao'></view>
+  <!-- 推荐 -->
+  <view>
+    <!-- 标题 -->
+    <view class='ititle'>
+      <text class='istop' id="{{listshow?'hover':''}}" bindtap='listshow'>置顶推荐 <text class='xiangxia'></text></text>
+      <text class='istop' id="{{newshow?'hover':''}}" style='margin:0 5px;' bindtap='newshow'>最新加入 <text class='xiangxia'></text></text>
+      <text class='ittop' id="{{bmshow?'hover':''}}" bindtap='bmshow'>便民电话 <text class='xiangxia'></text></text>
+    </view>
+    <!-- 置顶渲染 -->
+    <view wx:if="{{listshow}}">
+      <view class='list' wx:for="{{toplist}}" wx:key="{{index}}">
+        <!-- img -->
+        <view class='listImg' bindtap='details' data-id="{{item.id}}"><image src='{{url+item.imgs[0]}}'></image></view>
+        <!-- data -->
+        <view class='listData' bindtap='details' data-id="{{item.id}}">
+          <view class='lsdtitle'>{{item.title}}</view>
+          <view class='lsdtbl'>电话：{{item.tbl?item.tbl:item.phone}}</view>
+          <view class='lsdadd'>地址：<text>{{item.site}}</text> </view>
+        </view>
+        <!-- phone -->
+        <view class='listtbl' bindtap='calling' data-tb='{{item.tbl}}'><image src='../../imgs/tbl.png'></image></view>
+      </view>
+    </view>
+    <!-- 最新加入 -->
+    <view  wx:if="{{newshow}}">
+      <view class='list'  wx:for="{{newlist}}" wx:key="{{index}}">
+        <!-- img -->
+        <view class='listImg' bindtap='details' data-id="{{item.id}}"><image src='{{url+item.imgs[0]}}'></image></view>
+        <!-- data -->
+        <view class='listData' bindtap='details' data-id="{{item.id}}">
+          <view class='lsdtitle'>{{item.title}}</view>
+          <view class='lsdtbl'>电话：{{item.tbl?item.tbl:item.phone}}</view>
+          <view class='lsdadd'>地址：<text>{{item.site}}</text> </view>
+        </view>
+        <!-- phone -->
+        <view class='listtbl'  bindtap='calling' data-tb='{{item.tbl}}'><image src='../../imgs/tbl.png'></image></view>
+      </view>
+    </view>
+    <!-- 便民电话 -->
+    <view class='tblp' wx:if="{{bmshow}}">
+      <view class='tblptitle' wx:for="{{bmtb}}" wx:key="{{index}}" bindtap='calling' data-tb='{{item.tbl}}'> 
+        <view>{{item.name}}</view>
+        <view class='subtitle' >
+          <image class='icon' src='../../imgs/tbl.png'></image>
+          <text> {{item.tbl}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 页脚 -->
+  <view>
+    <view class='footer'>
+        <view>洪雅论坛：www.hongyawang.com</view>
+        <text bindtap='bqmz'>©2018 版权所有，文勃网络科技有限公司</text>
+        <text bindtap='bqmz' style='display:block'>免责声明</text>
+      </view>
+  </view>
+  <!-- 功能页面 -->
+  <view class='gn'>
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-name="1">我要加入</button>
+    <button open-type="contact">联系我们</button>
+    <button  open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-name="2">投诉建议</button>
+  </view>
+  <!-- 投诉 -->
+  <view class='bjs' wx:if="{{tskshow}}">
+    <view class='pinglunk' >
+      <text class='pltitle'>投诉/建议</text>
+      <textarea placeholder="请写下您的建议和投诉" maxlength='256' value="{{value}}" bindconfirm="bindconfirm" bindinput="inputBind"> </textarea>
+      <view> {{vlength}} / 256</view>
+      <button bindtap='tsopen'>发布</button>
+      <button bindtap='tsquxiao'>取消</button>
+    </view>
+  </view>
+  <!-- 加入我们 -->
+  <view class='bjs' wx:if="{{addshow}}">
+    <view class='addhy'>
+      <view>我要加入</view>
+      <view class='xiantiao '></view>
+      <view>联系人:<input type='text' bindinput="addhy" data-name='uname' value='{{uname}}'></input></view>
+      <view>店铺名:<input  type='text'  bindinput="addhy" data-name="title" value='{{title}}'></input></view>
+      <view>店铺地址:<input  type='text' bindinput="addhy" data-name="site" value='{{site}}'></input></view>
+      <view>联系电话:<input  type='number'  bindinput="addhy" data-name="phone" value='{{uphone}}'></input></view>
+      <view>
+      <button bindtap='open'>发布</button>
+      <button bindtap='quxiao'>取消</button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,202 @@
+/* pages/index/index.wxss */
+.img image{
+  width:100%;
+  height:150px;
+  text-align: center;
+}
+.img{
+  position: relative;
+}
+/* 搜索框 */
+.search{
+  position: absolute;
+  bottom: 5px;
+  margin:auto;
+  left:0;
+  right:0;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  width:80%;
+  height:60rpx;
+  background-color:#e0e0e0;
+  border:1rpx solid whitesmoke;
+  border-radius: 5px;  
+  padding: 0 20px;
+}
+/* 搜索框提示文字样式 */
+.search input{
+  font-size:13px;
+  font-family: "楷体";
+}
+
+/* 搜索框小图标 */
+.search ico{ 
+  size:20px;
+}
+.ititle{
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 3px;
+}
+.subcls{
+  text-align: center;
+}
+.clsview{
+  width: 25%;
+  display: inline-block;
+  margin: 5px 0;
+}
+/* .subcls view{
+  display: inline-block;
+  background: #e0e0e0;
+  font-size: 13px;
+  padding: 3px;
+  margin: 3px;
+} */
+.clsimg image{
+  width: 50px;
+  height: 50px;
+}
+.clsname{
+  font-size:13px; 
+  margin: 5px 0;
+  color: #000;
+}
+.tblp{
+  /* display: flex; */
+  text-align: center;
+}
+.tblptitle{
+  display: inline-block;
+  width: 25%;
+  border-bottom: 1px solid black;
+  padding: 5px;
+  margin: 5px; 
+  background: #f1f1f1;
+}
+.istop{
+  display: inline-block;
+  width: 33%;
+  text-align: center;
+}
+.list{
+  position: relative;
+  margin: 5px;
+  border-bottom:1px solid #e0e0e0; 
+}
+.listImg{
+  display: inline-block;
+  width: 30%;
+}
+.listImg image{
+  width: 90px;
+  height: 70px;
+}
+.listtbl{
+  display: inline-block;
+  float:right;
+  position: absolute;
+  top: 25%;
+  right: 0;  
+}
+.listtbl image{
+  width: 30px;
+  height: 30px;
+}
+.listData{
+  display: inline-block;
+  position: absolute;
+  width: 65%;
+  margin:5px 0 5px 5px; 
+}
+.lsdtitle{
+  font-size: 16px;
+  font-weight: 700;
+  color: black;
+}
+.lsdtbl{
+  font-size:14px; 
+  margin-top:5px; 
+  color: #000;
+}
+.lsdadd{
+  font-size:12px; 
+  margin-top:8px; 
+  color: #000;
+}
+.gn{
+  position: fixed;
+  bottom: 5px;
+  text-align: center;
+  width: 100%;
+  border-radius: 5px;
+  background: #fff;
+  color: #ccc;
+}
+.gn button{
+  display: inline-block;
+  width: 30%;
+  font-size:15px; 
+  margin:5px ;
+  color: red;
+}
+textarea{
+  height: 100px;
+  margin: 5px auto;
+  padding: 5px;
+  width: 90%;
+  border:1px solid #CCC; 
+  text-align: left;
+  position: relative;
+}
+.pinglunk{
+  background: #fff;
+  width: 100%;
+  text-align: center;
+  margin-top:10PX;
+   
+}
+.pinglunk button{
+  display: inline-block;
+  width: 30%;
+  font-size: 12px;
+  margin:0 30px;
+}
+.pinglunk view{
+  text-align: right;
+  font-size: 13px;
+  margin: 0 10px 5px 0;
+}
+.pltitle{
+  display: inline-block;
+  margin: 10px 0;
+}
+.addhy input{
+ display: inline-block;
+ border-bottom: 1px solid #ccc;
+ text-align: left;
+}
+.addhy{
+  text-align: center;
+  background: #fff;
+  width: 100%;
+  /* border: 2px solid #000; */
+}
+.addhy view{
+  margin-top:5px; 
+}
+.addhy view button{
+  display: inline-block;
+  width: 40%;
+  margin: 10px;
+}
+.bjs{
+  z-index: 10000;
+  position: fixed;
+  top:0px;
+  background: rgba(204, 204, 204,0.8);
+  height: 800px;
+  width: 100%;
+}

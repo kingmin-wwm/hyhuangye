@@ -1,0 +1,17 @@
+<!--pages/pinglun/pinglun.wxml-->
+<view>
+  <view>
+    <view class='ititle'>{{}}网友评论 </view>
+    <view class='xiantiao'></view>
+    <view class='pinglun' wx:for="{{pinglun}}" wx:key="{{index}}">
+      <view class='plleft'>
+        <view><image src='{{item.imgs}}' bindtap='previewImg'></image></view>
+        <view>{{(item.uname)}}</view>
+      </view>
+      <view class='plright'>
+        <view>{{item.data}}</view>
+        <view class='pltime'>评论时间: {{item.addtime}}</view>
+      </view>
+    </view>
+  </view>
+</view>

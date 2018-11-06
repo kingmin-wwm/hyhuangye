@@ -1,0 +1,125 @@
+<!--pages/details/details.wxml-->
+<view>
+  <!-- 图片 -->
+  <view class='carousel'>
+      <swiper class="swiper" autoplay="true" interval="3000" duration="800" circular="true">  
+        <block wx:for="{{list.imgs}}" wx:key="{{index}}">
+          <swiper-item class="banner">  
+            <image style='width:100%' src="{{url+item}}" class="slide-image" mode="aspectFill" data-index='{{index}}' bindtap='previewImg'/> 
+            <view class='nbNumber'>
+            <text>{{index+1}}/{{imgNumber}}</text>
+            </view>
+          </swiper-item>  
+        </block> 
+      </swiper>
+  </view>
+  <view class='xiantiao'></view>
+  <!-- title -->
+  <view>
+    <view class='title'>
+      <view>{{list.title}}</view>
+      <text>{{list.scope}}</text>
+    </view>
+    <view class='xiantiao'></view>
+    <view class='map' wx:if="{{mapshow}}">
+     <map 
+       longitude="{{lng}}"  latitude="{{lat}}" markers="{{mak}}" bindtap='daohang' 
+       data-lat="{{lat}}"  data-lng="{{lng}}" data-name="{{list.title}}" data-add="{{list.site}}"
+     ></map>
+     <view class='dizhi'>
+     地址:{{list.site}}
+      <image class='daohangimg' src='../../imgs/daohang.png' bindtap='daohang' 
+       data-lat="{{lat}}"  data-lng="{{lng}}" data-name="{{list.title}}" data-add="{{list.site}}">            </image> 
+     </view>
+    </view>
+  </view>
+  <!-- 详情 -->
+  <view class='xiantiao'></view>
+  <view>
+    <view class='ititle'>详情</view>
+      <!-- 详情 -->
+    <view class='xqtitle'>
+      <view>【详情介绍】</view>
+      <text>{{list.data}}</text>    
+    </view>
+    <view class='xqtitle'>
+      <view>【营业时间】</view>
+      <text>{{list.time}}</text>
+    </view>
+    <view class='xqtitle'>
+      <view>【详细地址】<text style='float:right'  bindtap='daohang' 
+       data-lat="{{lat}}"  data-lng="{{lng}}" data-name="{{list.title}}" data-add="{{list.site}}">点击导航</text></view>
+      <text>{{list.site}}</text>
+    </view>
+    <view class='xqtitle'>
+      <view>【联系方式】</view>
+      <view>联系人：{{list.name}} <text style='float:right' bindtap='calling' data-tb="{{list.phone}}">点击拨打电话</text></view>
+      <text>电话：{{list.tbl}} / {{list.phone}}</text>
+    </view>
+  </view>
+  <!-- 评论 -->
+  <view class='xiantiao'></view>
+  <view>
+    <view class='ititle'>网友评论 <text style='float:right'data-name='{{list.title}}'  data-id='{{list.id}}' bindtap='ckpl'>查看更多</text></view>
+    <view class='pinglun' wx:for="{{pinglun}}" wx:key="{{index}}">
+      <view class='plleft'>
+        <view bindtap='userImg'><image src='{{item.imgs}}'></image></view>
+        <view>{{(item.uname)}}</view>
+      </view>
+      <view class='plright'>
+        <view>{{item.data}}</view>
+        <view class='pltime'>评论时间: {{item.addtime}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 相关 -->
+  <view class='xiantiao'></view>
+  <view>
+    <view class='ititle'><text>您可能在找</text><text style='float:right' data-cls='{{list.class}}' bindtap='ckgd'>查看更多</text></view>
+    <view class='list' wx:for="{{xiangguan}}" wx:key="{{index}}">
+        <!-- img -->
+        <view class='listImg' bindtap='details' data-id="{{item.id}}"><image src='{{url+item.imgs[0]}}'></image></view>
+        <!-- data -->
+        <view class='listData' bindtap='details' data-id="{{item.id}}">
+          <view class='lsdtitle'>{{item.title}}</view>
+          <view class='lsdtbl'>{{item.tbl?item.tbl:item.phone}}</view>
+          <view class='lsdadd'>{{item.site}}</view>
+        </view>
+        <!-- phone -->
+        <view class='listtbl' bindtap='calling' data-tb='{{item.tbl}}'><image src='../../imgs/tbl.png'></image></view>
+    </view>
+  </view>
+  <!-- 页脚 -->
+  <view>
+    <view class='footer'>
+        <view>洪雅论坛：www.hongyawang.com</view>
+        <text bindtap='bqmz'>©2018 版权所有，文勃网络科技有限公司</text>
+      </view>
+  </view>
+  <!-- 功能页面 -->
+  <view class='gn'>
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-name="1">我要评论</button>
+    <button bindtap='calling' data-tb="{{list.phone}}">联系电话</button>
+    <button  open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-name="2">投诉建议</button>
+  </view>
+  <!-- 评论框 -->
+  <view wx:if="{{plkshow}}" class='bjs'>
+    <view class='pinglunk' >
+      <text class='pltitle'>评论</text>
+      <textarea placeholder="请输入您要说的话" maxlength='256' value="{{value}}" bindconfirm="bindconfirm" bindinput="inputBind"> </textarea>
+      <view> {{vlength}} / 256</view>
+      <button bindtap='open'>发布</button>
+      <button bindtap='quxiao'>取消</button>
+    </view>
+  </view>
+  <!-- 投诉 -->
+  <view class='bjs' wx:if="{{tskshow}}">
+    <view class='pinglunk'>
+      <text class='pltitle'>投诉/建议</text>
+      <textarea placeholder="请写下您的建议和投诉" maxlength='256' value="{{value}}" bindconfirm="bindconfirm" bindinput="inputBind"> </textarea>
+      <view> {{vlength}} / 256</view>
+      <button bindtap='tsopen'>发布</button>
+      <button bindtap='tsquxiao'>取消</button>
+    </view>
+  </view>
+</view>

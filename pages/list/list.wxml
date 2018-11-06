@@ -1,0 +1,71 @@
+<!--pages/list/list.wxml-->
+<view>
+  <!-- 搜索框 -->
+  <view class='searchview'>
+    <view class='search'>
+        <input type='text' bindconfirm='search' placeholder='请输入名字或关键字' ></input>
+        <text> | </text>
+        <icon type="search" size='15' color="gray"/>
+    </view>
+  </view>
+  <!-- 列表渲染 -->
+  <view>
+    <view class='ititle'>
+      <text class='istop' id="{{listshow?'hover':''}}" bindtap='listshow'>默认分类 </text> |
+      <text class='istop' id="{{newshow?'hover':''}}" style='margin:0 5px;' bindtap='newshow'>最新发布</text> |
+      <text class='ittop' id="{{clsshow?'hover':''}}" bindtap='clsshow'>{{name}}</text>
+    </view >
+    <view wx:if="{{listshow}}">
+      <!-- 默认分类列表 -->
+      <view class='list' wx:for="{{list}}" wx:key="{{index}}">
+        <!-- img -->
+        <view class='listImg' bindtap='details' data-id="{{item.id}}"><image src='{{url+item.imgs[0]}}'></image></view>
+        <!-- data -->
+        <view class='listData' bindtap='details' data-id="{{item.id}}">
+          <view class='lsdtitle'>{{item.title}}</view>
+          <view class='lsdtbl'>电话：{{item.tbl?item.tbl:item.phone}}</view>
+          <view class='lsdadd'>地址：<text>{{item.site}}</text> </view>
+        </view>
+        <!-- phone -->
+        <view class='listtbl' bindtap='calling' data-tb='{{item.tbl}}'><image src='../../imgs/tbl.png'></image></view>
+      </view>
+      <view class='listgd' wx:if="{{pnomrs}}" bindtap='pnomrs'>加载更多</view>
+    </view>
+    <!-- 最新发布列表 -->
+    <view  wx:if="{{newshow}}">
+     <view class='list' wx:for="{{newlist}}" wx:key="{{index}}">
+        <!-- img -->
+        <view class='listImg' bindtap='details' data-id="{{item.id}}"><image src='{{url+item.imgs[0]}}'></image></view>
+        <!-- data -->
+        <view class='listData' bindtap='details' data-id="{{item.id}}">
+          <view class='lsdtitle'>{{item.title}}</view>
+          <view class='lsdtbl'>电话：{{item.tbl?item.tbl:item.phone}}</view>
+          <view class='lsdadd'>地址：<text>{{item.site}}</text> </view>
+        </view>
+        <!-- phone -->
+        <view class='listtbl' bindtap='calling' data-tb='{{item.tbl}}'><image src='../../imgs/tbl.png'></image></view>
+      </view>
+      <view class='listgd' wx:if="{{pnonews}}" bindtap='pnonews'>加载更多</view>
+    </view>
+    <!-- 分类选择列表 -->
+    <view wx:if="{{clsshow}}">
+      <view class='ititle' wx:if="{{sclsshow}}">
+        <text class='iscls'  bindtap='cls' data-cls="默认分类">默认分类 </text> 
+        <text class='iscls' wx:for="{{subclass}}" wx:key="{{index}}" bindtap='cls' data-cls="{{item.subclass}}">{{item.subclass}} </text> 
+      </view>
+      <view class='list' wx:for="{{sublist}}" wx:key="{{index}}">
+        <!-- img -->
+        <view class='listImg' bindtap='details' data-id="{{item.id}}"><image src='{{url+item.imgs[0]}}'></image></view>
+        <!-- data -->
+        <view class='listData' bindtap='details' data-id="{{item.id}}">
+          <view class='lsdtitle'>{{item.title}}</view>
+          <view class='lsdtbl'>电话：{{item.tbl?item.tbl:item.phone}}</view>
+          <view class='lsdadd'>地址：<text>{{item.site}}</text> </view>
+        </view>
+        <!-- phone -->
+        <view class='listtbl' bindtap='calling' data-tb='{{item.tbl}}'><image src='../../imgs/tbl.png'></image></view>
+      </view>
+      <view class='listgd' wx:if="{{pnofls}}" bindtap='pnofls'>加载更多</view>
+    </view>
+  </view>
+</view>

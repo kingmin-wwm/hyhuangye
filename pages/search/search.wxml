@@ -1,0 +1,22 @@
+<!--pages/search/search.wxml-->
+<view class='img'>
+    <image src='../../imgs/tel114.jpg'></image>
+    <view class='search'  >
+      <input type='text' bindconfirm='search' placeholder='请输入名字或关键字' ></input>
+      <icon type="search"  color="gray"/>
+    </view>
+</view>
+<view class='xiantiao'></view>
+<view class='ititle'>搜索{{value}}的列表</view>
+<view class='list' wx:for="{{list}}" wx:key="{{index}}">
+        <!-- img -->
+        <view class='listImg' bindtap='details' data-id="{{item.id}}"><image src='{{url+item.imgs[0]}}'></image></view>
+        <!-- data -->
+        <view class='listData' bindtap='details' data-id="{{item.id}}">
+          <view class='lsdtitle'>{{item.title}}</view>
+          <view class='lsdtbl'>电话：{{item.tbl?item.tbl:item.phone}}</view>
+          <view class='lsdadd'>地址：<text>{{item.site}}</text> </view>
+        </view>
+        <!-- phone -->
+        <view class='listtbl' bindtap='calling' data-tb='{{item.tbl}}'><image src='../../imgs/tbl.png'></image></view>
+</view>

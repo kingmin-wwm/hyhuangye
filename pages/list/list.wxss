@@ -1,0 +1,107 @@
+/* pages/list/list.wxss */
+.searchview{
+  width: 100%;
+  background-color:#e0e0e0;
+  height:100rpx;
+  position: relative;  
+}
+.search{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left:-45%;
+  margin-top:-30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  width:90%;
+  height:60rpx;
+  background-color:#fff;
+  border:1rpx solid whitesmoke;
+  border-radius: 10px;  
+}
+/* 搜索框提示文字样式 */
+.search input{
+  font-size:13px;
+  font-family: "楷体";
+  width: 100%;
+}
+
+/* 搜索框小图标 */
+.search ico{ 
+}
+.search text{
+  margin: 0 8px;
+  color: #ccc;
+}
+.ititle{
+  width: 90%;
+  margin: 5px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  color: #ccc;
+}
+.istop{
+  display: inline-block;
+  margin: 5px 0;
+}
+.iscls{
+  display: inline-block;
+  margin: 5px;
+  border-bottom: 1px solid #ccc;
+
+
+}
+
+/* 列表 */
+.list{
+  position: relative;
+  margin: 5px;
+  border-bottom:1px solid #e0e0e0; 
+}
+.listImg{
+  display: inline-block;
+  width: 30%;
+}
+.listImg image{
+  width: 90px;
+  height: 70px;
+}
+.listtbl{
+  display: inline-block;
+  float:right;
+  position: absolute;
+  top: 25%;
+  right: 0;  
+}
+.listtbl image{
+  width: 30px;
+  height: 30px;
+}
+.listData{
+  display: inline-block;
+  position: absolute;
+  width: 65%;
+  margin:5px 0 5px 5px; 
+}
+.lsdtitle{
+  font-size: 16px;
+  font-weight: 700;
+  color: black;
+}
+.lsdtbl{
+  font-size:14px; 
+  margin-top:5px; 
+  color: #ccc;
+}
+.lsdadd{
+  font-size:12px; 
+  margin-top:8px; 
+  color: #ccc;
+}
+  .listgd{
+    text-align: center;
+    color: #ccc;
+  }

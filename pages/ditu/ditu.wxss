@@ -1,0 +1,12 @@
+/* pages/ditu/ditu.wxss */
+.mz{
+  text-align: center;
+}
+.title{
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 3px;
+}
+.data view{
+  margin: 10px;
+}
